@@ -17,6 +17,9 @@ jobs:
           toolchain: nightly
           override: true
 
+      - name: Install OpenSSL
+        run: apt-get update && apt-get install libssl-devel
+
       - name: Build check
         uses: actions-rs/cargo@v1
         with:
