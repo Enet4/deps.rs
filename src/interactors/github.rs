@@ -13,6 +13,7 @@ const GITHUB_USER_CONTENT_BASE_URI: &'static str = "https://raw.githubuserconten
 
 pub fn get_manifest_uri(repo_path: &RepoPath, path: &RelativePathBuf) -> Result<Uri, Error> {
     let path_str: &str = path.as_ref();
+    let path_str = path_str.trim_start_matches('/');
     Ok(format!(
         "{}/{}/{}/HEAD/{}",
         GITHUB_USER_CONTENT_BASE_URI,
