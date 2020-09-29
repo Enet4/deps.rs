@@ -92,7 +92,7 @@ impl<F: Future<Error = Error>> Future for Cached<F> {
     fn poll(&mut self) -> Poll<Self::Item, Self::Error> {
         self.0
             .poll()
-            .map_err(|_err| anyhow!("TODO: shared error not clone-able"))
+            .map_err(|err| anyhow!("{}", err))
             .map(|item| item.map(CachedItem))
     }
 }
